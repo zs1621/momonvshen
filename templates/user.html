@@ -1,0 +1,200 @@
+$def with (users,city,last,page,chinesecity)	
+$var title: $chinesecity
+$code:
+	def quzheng(num):
+		return round(num)
+	current_page = page
+	if (int(current_page)-2)>0:
+		page_start = int(current_page) - 2
+	else:
+		page_start = 1
+	if (page_start + 4) >= last:
+		page_end = last
+	else:
+		page_end = page_start + 4 
+<div id="images">
+			$for user in users:
+			<div class="data" title="$user['name']">
+				<a href="/profile/$(user['_id']['$oid'])" class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=230px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_L.jpg"></img>
+				</a>
+				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']" >$user['likes']</a>
+			</div>
+</div>
+<p title="$last" id="last" display="none"></p>
+<p title="$page" id="dpage" display="none"></p>
+<p title="$city" id="city" display="none"></p>
+<p title="$page_end" id="page_end" display="none"></p>
+<div class="page">
+	<div class="pagination" current_page="$current_page">
+		<ul>
+			$if current_page == 1:
+				<li class="disabled"><a>«</a></li>
+			$else:
+				<li><a href="/area/$(city)?page=1">«</a></li>
+			$if page_start > 1:
+				<li><a>...</a></li>
+			$for i in range(1,page_end):
+				$if i == current_page:
+					<li class="disabled"><a>$i</a></li>
+				$else:
+					<li class=""><a href="/area/$(city)?page=$(i)">$i</a></li>
+			$if page_end < last:
+				<li><a>...</a></li>
+			$if current_page == last:
+				<li class="disabled"><a>»</a></li>
+			$else:
+				<li><a href="/area/$(city)?page=$(last)">»</a></li>
+		</ul>
+	</div>	
+</div>
+<script>
+//the initial variable
+var page_end = jQuery("#page_end").attr('title');
+var city = jQuery("#city").attr('title');
+var page = jQuery("#dpage").attr('title');
+var count = jQuery("#last").attr('title');
+//Photo layout 
+window.onload = function(){
+	pubu();
+}
+//Photo layout->action 
+function pubu(){
+		var margin = 10;
+		var li = jQuery(".data");
+		var li_W = li[0].offsetWidth + margin;
+		var h = [];
+		var n  = document.documentElement.offsetWidth/li_W|0;
+		for(var i = 0; i < li.length; i++){
+			li_H = li[i].offsetHeight;
+			if(i < n){
+				h[i] = li_H;
+				li.eq(i).css("top",0);
+				li.eq(i).css("left",i*li_W);
+			}else{
+				min_H = Math.min.apply(null,h);
+				minKey = getarraykey(h,min_H);
+				h[minKey] += li_H + margin;
+				li.eq(i).css("top",min_H + margin);
+				li.eq(i).css("left",minKey * li_W);
+			}
+		}		
+}
+var j = 1;
+//Ajax get user data ->action
+function getmore(i,page){
+	jQuery("#loading").show();
+	jQuery.ajax({
+		type:"GET",
+		url: "/pbget",
+		data: {"cursor":i,"city":city,"page":page},
+		dataType: "JSON",
+		error: function(){
+			alert('err')
+		},
+		success: function(data){
+			jQuery("#loading").hide();
+
+			for(var m=0;m<data.length;m++){
+				console.log(data[m]._id['\$oid'])
+				var html = "<div class=data title="+ data[m].name +"><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=230px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_L.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+">"+data[m].likes+"</a></div>";
+				console.log(data[m].photos)
+				jQuery("#images").append(html);
+				jQuery("#loading").hide();
+			}
+			pubu();
+			j = 1;
+		}
+	})
+}
+//scroll to bottom -> action
+jQuery(window).bind("scroll",function(){
+	var i = jQuery(".data").length + 1;
+	if(jQuery(document).scrollTop() + jQuery(window).height() > jQuery(document).height() - 800 && j == 1){
+		console.log('dddd');
+		j = 0;
+    getmore(i,page);
+	}
+})
+
+function getarraykey(s,v){
+	for(k in s)
+		if(s[k] == v) return k
+}
+</script>
+<script type="text/javascript">
+//pagination action
+	jQuery(document).ready(function(){
+		var nav = jQuery('.pagination');
+		var current_page = nav.attr('current_page');
+		if(current_page){
+			nav.find('li').each(function(){
+				var li = jQuery(this);
+				var a = li.find('a');
+				if(a.html() == current_page){
+					li.addClass('active');
+					a.removeAttr('href');
+				}
+			})
+		}
+	})
+</script>
+<script>
+jQuery(function(){
+	jQuery(".fav-btn").live('click',function(){
+		var self = jQuery(this);
+		var hasFav = self.hasClass('fav-cancel')? 1:0;
+		var paras = {id: self.attr('data-id')}
+		console.log(paras)
+		jQuery.ajax({
+			type:hasFav? 'POST':'GET',
+			url:'/updatelikes',
+			data: paras,
+			error: function(){
+				console.log('err')
+			},
+			success: function(user){
+				data = JSON.parse(user);
+				console.log(data[0]);
+				for(key in data[0]){
+					if(key == "likes"){
+						text = data[0][key]
+					}
+				}
+				self.text(text);				
+					if(hasFav){
+						self.removeClass('fav-cancel').addClass('fav-add');
+					}else{
+						self.removeClass('fav-add').addClass('fav-cancel');
+					}
+			},
+			dataType:"JSON"
+		})
+	});
+	jQuery(".fancy").fancybox({
+		maxWidth:640,
+		maxHeight:640,
+		width:600,
+		fitToView:false,
+		height:500,
+		closeClick:true,
+		openEffect:"none",
+		closeEffect:"none",
+		nextClick:false,
+		closeBtn:true,
+		modal:false,
+		mousewheel:false,
+		helpers:{
+			title:{type:"float"},
+			buttons:{}
+		}
+	
+	})
+})
+</script>
+
+
+
+
+		
+
+

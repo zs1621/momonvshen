@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<title></title>
+	<script src="../static/city.js"></script>
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<div id="pc">
+
+	</div>
+	<script>
+		 $(document).ready(function(){
+		 	for(var i in pc.citylist){
+		 		$("#pc").append("<a href=/"+pc.citylist[i].p + " id="+ pc.citylist[i].p + ">"+ pc.citylist[i].p + "</a>&nbsp;&nbsp;&nbsp;")
+		 	}
+		 })
+		//function init(){
+//			for(var i in pc.citylist){
+//				document.getElementById("pc").innerHtml("<a href=/"+pc.citylist[i].p + " id="+ pc.citylist[i].p + ">"+ pc.citylist[i].p + "</a>&nbsp;&nbsp;&nbsp;")
+//			}
+//		
+//		}
+//		window.onload = function(){init()}
+	</script>
+</body>
+</html>

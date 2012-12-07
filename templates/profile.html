@@ -1,0 +1,57 @@
+$def with(profile,title)
+$var title: $title
+
+<div id="page">
+<div class="content">
+	<div id="galleria">
+	$for photo in profile[0]['photos']:
+		<a href="http://img.immomo.com/album/$photo[0:2]/$photo[2:4]/$(photo)_L.jpg">
+		<img src="http://img.immomo.com/album/$photo[0:2]/$photo[2:4]/$(photo)_S.jpg" alt="$photo"></a>
+	</div>
+</div>
+<div id="profile">
+		$if profile[0]['momoid'] :
+		<p><label>陌陌号:</label>
+			<span>$profile[0]['momoid']</span>
+		</p>
+		<p><label>昵称:</label>	
+			<span>$profile[0]['name']</span>
+		</p>
+		<p><label>年龄:</label>
+			<span>$profile[0]['age']</span>
+		</p>
+		$if profile[0]['sign'] != '':
+				<p><label>个性签名:</label>
+					<span>$profile[0]['sign']</span>
+				</p>
+		<p><label>星座:</label>
+			<span>$profile[0]['constellation']</span>
+		</p>	
+		$if profile[0]['school'] !='':
+			<p><label>学校:</label>
+				<span>$profile[0]['school']</span>
+			</p>
+		$if profile[0]['website'] != '':
+			<p><label>说点啥:</label>
+				<span>$profile[0]['website']</span>
+			</p>
+		$if profile[0]['hangout'] !='':
+			<p><label>经常逛的地：</label>
+				<span>$profile[0]['hangout']</span>
+			</p>
+
+</div>
+</div>
+
+<script src="/static/js/galleria-1.2.8.min.js"></script>
+
+<script src="/static/js/galleria.history.min.js"></script>
+<script>        
+Galleria.loadTheme('/static/js/galleria.classic.min.js');
+Galleria.run('#galleria')
+</script>
+
+
+
+
+

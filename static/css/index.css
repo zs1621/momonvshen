@@ -1,0 +1,189 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+    font-family: "微软雅黑";
+
+}
+html{
+	background-color: #E9E9E9;
+	font-family:'lato';
+	font-size: 13px;
+}
+a:link,a:visited{
+	color: black;
+	/*text-decoration: none;*/
+}
+a:hover{
+	color:#008ED3;
+}
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none outside none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#images{
+    position: relative;
+    margin: 0 24px;
+    top: 10px;
+}
+body{
+
+}
+.data{
+    position: absolute;padding: 10px;border: 1px solid #ccc;text-align: center;top: 0;left: 0;background-color: #ffffff;list-style: none;}
+}
+img{height: auto; display: block;border: 0}
+#page {
+    position: relative;
+    margin: 0 auto;
+}
+body{
+    background-image:url(about:blank);background-attachment: fixed; 
+}
+#header{
+		background:rgba(199,126,181,0.3);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cc77eb5,endColorstr=#4cc77eb5);zoom:1;
+		border-bottom:1px solid #CDCDCD;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+		height: 35px;
+		padding: 0 15px 0 0;
+		position: fixed !important;
+        position: absolute;
+		text-shadow:0 1px #FFFFFF;
+		width:100%;
+		z-index: 100;
+        top:expression(eval(document.documentElement.scrollTop));
+}
+:root #header{filter:none\9;}
+#area{
+	color: #A8B3AB;
+	font-family: "微软雅黑";
+	font-size:26px;
+	margin-left:480px;
+	position: relative;
+	width: 400px;
+    float: left;
+}
+#homepage{
+    color:#A8B3AB;
+    margin-right: -300px;
+    text-decoration: none;
+    font-size: 23px;
+}
+.headerSpacer{
+	height: 70px;
+}
+#loading{
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    height:30px;
+    display:none;
+    line-height:30px;
+    bottom: 0;
+    opacity: 0.8;
+    position: fixed;
+    text-align:center;
+    width: 100%;
+    margin: 0 auto;
+}
+/*.page{
+    width:580px;
+    padding:10px;
+    margin:10px auto;
+    border: 1px solid #fff;
+    background-color:#f7f7f7;
+    }    
+*/
+.page{
+    background:rgba(199,126,181,0.3);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cc77eb5,endColorstr=#4cc77eb5);zoom:1;
+    width:100%;
+    height:30px;
+    position:fixed;
+    bottom:0;
+    _position:absolute;
+    _top:expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight);
+    border:1px solid #FFFFFF;
+}
+
+.pagination{
+    height: 30px;
+    margin: 0 auto;
+}
+.pagination ul{
+    border-radius:3px 3px 3px 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+ul{
+    list-style: disc outside none;
+}
+.pagination li{
+    display: inline;
+}
+li{
+    line-height: 18px;
+    font-family: "微软雅黑"
+}
+.active a{
+color: #008ED3;
+}
+.pagination li:first-child a{
+    border-left-width: 1px;
+    border-radius: 3px 0 0 3px;
+}
+.pagination a{
+    line-height: 30px;
+}
+.pagination a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #DDDDDD;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    float: left;
+    line-height: 34px;
+    padding: 0 14px;
+    text-decoration: none;
+}
+/*like 按钮*/
+a.fav-btn:link,a.fav-btn:visited{
+    color:#FFF6EE;
+    border-color: #F2ECE7;
+    color: #99776b;
+    text-decoration: none;
+}
+a{
+    cursor: pointer;
+}
+.fav-btn{
+    border: 1px solid #EDCEBA;
+    border-radius: 3px;
+    display: inline-block;
+    height: 19px;
+    margin-left: 15px;
+    overflow: hidden;
+    padding: 0 8px 0 19px;
+    vertical-align: middle; 
+    margin-top:5px;
+}
+.fav-cancel,.fav-cancel:link,.fav-cancel:hover{
+    background:url("/static/img/ic_like.png")no-repeat scroll 4px -17px transparent;
+}
+.fav-add,.fav-add:link,.fav-add:hover{
+    background: url('/static/img/ic_like.png') no-repeat scroll 4px 3px transparent;}
+img{display:block;}   
