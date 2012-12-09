@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #coding=utf-8
 import web
 import pymongo
@@ -110,4 +111,5 @@ class Like:
 		#data = {'r':1,'user':user}
 		return json.dumps(user)
 if __name__ == "__main__":
+	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
