@@ -5,7 +5,7 @@ import pymongo
 import model
 import json
 
-
+web.config.debug = False
 
 urls = (
 	'/','index',

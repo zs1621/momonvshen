@@ -15,7 +15,7 @@ $code:
 <div id="images">
 			$for user in users:
 			<div class="data" title="$user['name']">
-				<a href="/profile/$(user['_id']['$oid'])" class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=230px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_L.jpg"></img>
+				<a href="/profile/$(user['_id']['$oid'])" class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=180px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_L.jpg"></img>
 				</a>
 				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']" >$user['likes']</a>
 			</div>
@@ -96,7 +96,7 @@ function getmore(i,page){
 
 			for(var m=0;m<data.length;m++){
 				console.log(data[m]._id['\$oid'])
-				var html = "<div class=data title="+ data[m].name +"><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=230px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_L.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+">"+data[m].likes+"</a></div>";
+				var html = "<div class=data title="+ data[m].name +"><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=180px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_L.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+">"+data[m].likes+"</a></div>";
 				console.log(data[m].photos)
 				jQuery("#images").append(html);
 				jQuery("#loading").hide();
