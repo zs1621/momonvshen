@@ -16,10 +16,7 @@ $var ctitle: $city
 
 <script>
 //the initial variable
-
 var city = jQuery("#city").attr('title');
-
-
 //Photo layout 
 window.onload = function(){
 	pubu();
@@ -54,7 +51,7 @@ function getmore(i){
 	jQuery("#loading").show();
 	jQuery.ajax({
 		type:"GET",
-		url: "/pbget",
+		url: "/topbuget",
 		data: {"cursor":i,"city":city},
 		dataType: "JSON",
 		error: function(){
@@ -75,13 +72,11 @@ function getmore(i){
 //scroll to bottom -> action
 jQuery(window).bind("scroll",function(){
 	var i = jQuery(".data").length + 1;
-	// alert(jQuery(document).scrollTop()+jQuery(window).height());
-	// alert(jQuery(document).height()); 
-	if((jQuery(document).scrollTop() + jQuery(window).height()) > (jQuery(document).height() - 100) && (j == 1)){
+	if(jQuery(document).scrollTop() + jQuery(window).height() > jQuery(document).height() - 100 && j == 1){
 		j = 0;
     getmore(i);
 	}
-})
+}) 
 
 function getarraykey(s,v){
 	for(k in s)
