@@ -34,14 +34,19 @@ table {
 }
 #images{
     position: relative;
-    margin: 0 24px;
-    top: 10px;
+    margin: 0 40px;
+    width:1300px;
 }
 body{
 
 }
 .data{
-    position: absolute;padding: 10px;border: 1px solid #ccc;text-align: center;top: 0;left: 0;background-color: #ffffff;list-style: none;}
+    float:left;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #ffffff;
+}
 }
 img{height: auto; display: block;border: 0}
 #page {
@@ -74,12 +79,16 @@ body{
 	width: 400px;
     float: left;
 }
-#homepage{
+#homepage,#homenav,#homerandom{
     color:#A8B3AB;
-    margin-right: -300px;
+    
     text-decoration: none;
-    font-size: 23px;
+    font-size: 20px;
 }
+#homepage:hover,#homenav:hover,#homerandom:hover{
+    color:#008ED3
+}
+
 .headerSpacer{
 	height: 70px;
 }

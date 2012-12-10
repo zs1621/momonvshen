@@ -13,6 +13,8 @@ urls = (
 	'/pbget','Retrive',
 	'/profile/(.*)','GetProfile',
 	'/updatelikes','Like',
+	'/top/(\w+)','Top',
+	'/topbuget','TopRetrive'
 )
 
 app = web.application(urls,globals())
@@ -21,14 +23,8 @@ app = web.application(urls,globals())
 render1 = web.template.render('templates',base="base1")
 render = web.template.render('templates',base="base")
 
-class index:
-	def GET(self):
-		title = "MOMO"
-		return render.index(title)
-		
-class Area:
-	def GET(self,name):
-		cs = {"sh":"上海",
+
+cs = {"sh":"上海",
 					"xj":"新疆",
 					"bj":"北京",
 					"xz":"西藏",
@@ -61,33 +57,33 @@ class Area:
 					"sx":"山西",
 					"shx":"陕西",
 					"am":"澳门"}
-		ceil = lambda x:int(x) + 1
+class index:
+	def GET(self):
+		title = "MOMO"
+		return render.index(title)
+		
+class Area:
+	def GET(self,name):		
 		city = format(name)
 		for key,value in cs.iteritems():
 			if key == city:
 				chinesecity = value.decode("utf-8")
-		counts = model.getCount(city)#get the user counts in some city
-		last = ceil(counts/400)
 		if web.input():
-			page = web.input().page
-			if page != last:
-				cursor = (int(page)-1)*300 + 1
+				cursor = int(web.input().cursor)
 				users = json.loads(model.getLimitUser(city,cursor))
-			else:
-				cursor = (int(page)-1)*300 + 1
-				users = json.loads(model.getLastUser(city,cursor))
 		else:
-			page = 1
 			users = json.loads(model.getUser(city))
-		return render.user(users,city,last,page,chinesecity)
+
+		for user in users:
+			user['likes'] = int(user['likes'])
+		return render.user(users,city,chinesecity)
 		
 
 class Retrive:
 	def GET(self):
 		cursor = web.input().cursor
 		req = web.input().city
-		page= web.input().page
-		cursor = (int(page)-1)*300 + int(cursor)
+		cursor = int(cursor)
 		users = model.getLimitUser(req,cursor)
 		return users    
 
@@ -110,6 +106,25 @@ class Like:
 		user = model.reduce_likes(id)
 		#data = {'r':1,'user':user}
 		return json.dumps(user)
+
+class Top:
+	def GET(self,name):
+		city = format(name)
+		for key,value in cs.iteritems():
+			if key == city:
+				chinesecity = value.decode("utf-8") + "Top100"
+		users = json.loads(model.getTop(city))
+		for user in users:
+			user['likes'] = int(user['likes'])
+		return render.top(users,city,chinesecity)
+class TopRetrive:
+	def GET(self):
+		city = web.input().city
+		cursor = int(web.input().cursor)
+		users = model.getTopPubu(city,cursor)
+		# web.header("Content-Type","text/xml")
+		# web.header("CharacterEncoding","utf-8")
+		return users
 if __name__ == "__main__":
 	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
