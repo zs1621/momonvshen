@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 #coding=utf-8
 import web
 import pymongo
 import model
 import json
 
-
+web.config.debug = False
 
 urls = (
 	'/','index',
@@ -67,6 +68,8 @@ class Area:
 		for key,value in cs.iteritems():
 			if key == city:
 				chinesecity = value.decode("utf-8")
+		print web.input()
+		print (web.input()==None)
 		if web.input():
 				cursor = int(web.input().cursor)
 				users = json.loads(model.getLimitUser(city,cursor))
@@ -125,4 +128,5 @@ class TopRetrive:
 		# web.header("CharacterEncoding","utf-8")
 		return users
 if __name__ == "__main__":
+	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
