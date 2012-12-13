@@ -68,6 +68,8 @@ class Area:
 		for key,value in cs.iteritems():
 			if key == city:
 				chinesecity = value.decode("utf-8")
+		print web.input()
+		print (web.input()==None)
 		if web.input():
 				cursor = int(web.input().cursor)
 				users = json.loads(model.getLimitUser(city,cursor))
