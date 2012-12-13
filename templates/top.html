@@ -72,14 +72,14 @@ function getmore(i){
 //scroll to bottom -> action
 jQuery(window).bind("scroll",function(){
 	var i = jQuery(".data").length + 1;
-	if(jQuery(document).scrollTop() + jQuery(window).height() > jQuery(document).height() - 800 && j == 1){
+	if(i !=101 ){
+		if(jQuery(document).scrollTop() + jQuery(window).height() > jQuery(document).height() - 800 && j == 1){
 		j = 0;
-		if (i != 101){
-			getmore(i);
+		getmore(i);
 		}
+	}else{
 		pubu();
-    
-	}
+	} 
 }) 
 
 function getarraykey(s,v){

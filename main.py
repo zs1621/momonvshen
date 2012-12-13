@@ -4,8 +4,21 @@ import web
 import pymongo
 import model
 import json
+# import logging
+# import logging.config
 
-web.config.debug = False
+# logging.config.fileConfig("logging.conf")
+# #create logger
+# logger = logging.getLogger("example")
+#"application" code 
+# logger.debug("debug message")
+# logger.info("info message")
+# logger.warn("warn message")
+# logger.error("error message")
+# logger.critical("critical message")
+
+
+web.config.debug = True
 
 urls = (
 	'/','index',
@@ -68,14 +81,7 @@ class Area:
 		for key,value in cs.iteritems():
 			if key == city:
 				chinesecity = value.decode("utf-8")
-		print web.input()
-		print (web.input()==None)
-		if web.input():
-				cursor = int(web.input().cursor)
-				users = json.loads(model.getLimitUser(city,cursor))
-		else:
-			users = json.loads(model.getUser(city))
-
+		users = json.loads(model.getUser(city))
 		for user in users:
 			user['likes'] = int(user['likes'])
 		return render.user(users,city,chinesecity)
@@ -100,13 +106,11 @@ class Like:
 	def GET(self):
 		id = web.input().id
 		user = model.add_likes(id)
-		#data = {'r':0,'user':user}
 		return json.dumps(user)
 	def POST(self):
 		print web.input()
 		id = web.input().id
 		user = model.reduce_likes(id)
-		#data = {'r':1,'user':user}
 		return json.dumps(user)
 
 class Top:
@@ -124,8 +128,6 @@ class TopRetrive:
 		city = web.input().city
 		cursor = int(web.input().cursor)
 		users = model.getTopPubu(city,cursor)
-		# web.header("Content-Type","text/xml")
-		# web.header("CharacterEncoding","utf-8")
 		return users
 if __name__ == "__main__":
 	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)

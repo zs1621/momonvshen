@@ -4,7 +4,7 @@
 
 #title2, #title2:visited {display:block; width:550px; height:617px; padding-top:260px; position:absolute; left:0; top:0; cursor:default; text-decoration:none;}
 * html #title2 {height:617px; he\ight:0;}/*IE6.0ÒÔÏÂÖÐÏÔÊ¾*/
-#gmap #title2:hover {background:transparent url(group_col.gif) no-repeat 0 0; overflow:visible; color:/c00;}
+#gmap #title2:hover {overflow:visible; color:/c00;}
 
 /*ÐÂ½®*/
 #xj {display:block; width:206px; height:0; padding-top:156px; overflow:hidden; position:absolute; left:14px; top:63px;}
