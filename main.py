@@ -18,7 +18,7 @@ import json
 # logger.critical("critical message")
 
 
-web.config.debug = True
+web.config.debug = False
 
 urls = (
 	'/','index',

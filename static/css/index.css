@@ -33,10 +33,12 @@ table {
     border-spacing: 0;
 }
 #images{
+    float:left;
     position: relative;
-    margin: 0 40px;
-    width:1300px;
+    margin: 10px 40px;
+    width:1200px;
 }
+
 body{
 
 }
