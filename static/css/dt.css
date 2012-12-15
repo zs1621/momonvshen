@@ -1,11 +1,26 @@
 *{text-align:center;}
-#gmap {display:block; width:550px; height:617px; background:url(../img/map.jpg) no-repeat; position:relative; margin:0 auto 2em auto;}
+#gmap {display:block; width:550px; height:617px; background:url(../img/map.jpg) no-repeat; position:relative; margin:0 0 0 200px; border:1px solid #66666;float: left}
 #gmap a {color:/000; font-family:arial, sans-serif; font-size:1.2em; font-weight:bold; text-transform:uppercase;}
 
 #title2, #title2:visited {display:block; width:550px; height:617px; padding-top:260px; position:absolute; left:0; top:0; cursor:default; text-decoration:none;}
 * html #title2 {height:617px; he\ight:0;}/*IE6.0ÒÔÏÂÖÐÏÔÊ¾*/
 #gmap #title2:hover {overflow:visible; color:/c00;}
-
+#right{
+	margin: 150px 100px 0 800px;
+	width: 300px;
+}
+#introduce{
+	background-color: rgba(199,126,181,0.3);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cc77eb5,endColorstr=#4cc77eb5);zoom:1;;
+	font-size: 20px;
+  width: 400px;
+  height: auto;
+  margin:0 auto;
+  display: block;
+  border-radius: 0.3em;
+  -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  box-shadow:5px 5px 7px rgba(33, 33, 33, 0.7);
+}
 /*ÐÂ½®*/
 #xj {display:block; width:206px; height:0; padding-top:156px; overflow:hidden; position:absolute; left:14px; top:63px;}
 * html #xj {height:156px; he\ight:0;text-indent:-9000px;}
