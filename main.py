@@ -4,6 +4,7 @@ import web
 import pymongo
 import model
 import json
+import random
 # import logging
 # import logging.config
 
@@ -81,7 +82,9 @@ class Area:
 		for key,value in cs.iteritems():
 			if key == city:
 				chinesecity = value.decode("utf-8")
-		users = json.loads(model.getUser(city))
+		ran = random.random()
+		print ran
+		users = json.loads(model.getRandomUser(city,ran))
 		for user in users:
 			user['likes'] = int(user['likes'])
 		return render.user(users,city,chinesecity)
@@ -130,5 +133,5 @@ class TopRetrive:
 		users = model.getTopPubu(city,cursor)
 		return users
 if __name__ == "__main__":
-	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
+	#web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
