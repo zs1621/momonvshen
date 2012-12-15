@@ -87,12 +87,18 @@ function getarraykey(s,v){
 		if(s[k] == v) return k
 }
 </script>
+<script src="/static/js/jquery.cookie.js">
+</script>
 <script>
 jQuery(function(){
 	jQuery(".fav-btn").live('click',function(){
 		var self = jQuery(this);
 		var hasFav = self.hasClass('fav-cancel')? 1:0;
 		var paras = {id: self.attr('data-id')}
+	        if(jQuery.cookie('the_cookie'+self.attr('data-id'))){
+                        alert("you only have one chance to love A Godness@@ ")
+                }else{
+		var cookie = jQuery.cookie('the_cookie'+self.attr('data-id'),'Gonn',{expires:60*1000*60*24*30});
 		jQuery.ajax({
 			type:hasFav? 'POST':'GET',
 			url:'/updatelikes',
@@ -115,7 +121,7 @@ jQuery(function(){
 					}
 			},
 			dataType:"JSON"
-		})
+		})}
 	});
 	jQuery(".fancy").fancybox({
 		maxWidth:640,
@@ -138,7 +144,18 @@ jQuery(function(){
 	})
 })
 </script>
+<script>
 
+jQuery(function(){
+	var idd = 2;
+	jQuery(".fancy").live('click',function(){
+		if(!jQuery.cookie('the_cookie'+idd)){
+			window.open("http://lm.lrswl.com/cf.aspx?88&momonvshen")
+			var cookie = jQuery.cookie('the_cookie'+idd,'Gonn',{expires:60*1000*60*24*7})
+		}
+	})
+})
+</script>
 
 
 

@@ -1,15 +1,16 @@
 $def with (users,city,chinesecity)	
 $var title: $chinesecity
 $var ctitle: $city
-<div id="ad1">
-<a class="button" href="http://lm.lrswl.com/cf.aspx?88&momonvshen"><span>广告|http://lm.lrswl.com/cf.aspx?88&momonvshen</span></a>
-</div>
+<!--div id="ad1">
+<a href="http://lm.lrswl.com/cf.aspx?88&momonvshen"><span>Ad|http://lm.lrswl.com/cf.aspx?88&momonvshen</span></a>
+</divi-->
 <div id="ad2">
+<img src="/static/img/waiting.gif" style="display:none"></img>
 </div>
 <div id="images">
 			$for user in users:
 			<div class="data" title="$user['name']">
-				<a href="/profile/$(user['_id']['$oid'])" class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=180px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_S.jpg"></img>
+				<a href="/profile/$(user['_id']['$oid'])" class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=150px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_S.jpg"></img>
 				</a>
 				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']" >$user['likes']</a>
 			</div>
@@ -67,7 +68,7 @@ function getmore(i){
 		success: function(data){
 			jQuery("#loading").hide();
 			for(var m=0;m<data.length;m++){
-				var html = "<div class=data title="+ data[m].name +"><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=180px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_S.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+">"+data[m].likes+"</a></div>";
+				var html = "<div class=data title="+ data[m].name +"><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=150px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_S.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+">"+data[m].likes+"</a></div>";
 				jQuery("#images").append(html);
 				jQuery("#loading").hide();
 			}
@@ -92,12 +93,18 @@ function getarraykey(s,v){
 		if(s[k] == v) return k
 }
 </script>
+<script src="/static/js/jquery.cookie.js" type="text/javascript">
+</script>
 <script>
 jQuery(function(){
 	jQuery(".fav-btn").live('click',function(){
 		var self = jQuery(this);
 		var hasFav = self.hasClass('fav-cancel')? 1:0;
-		var paras = {id: self.attr('data-id')}
+		var paras = {id: self.attr('data-id')};
+		if(jQuery.cookie('the_cookie'+self.attr('data-id'))){
+			alert("you have only one chance to love the oen Godeness @@")
+		}else{
+		var cookie = jQuery.cookie('the_cookie'+self.attr('data-id'),'Gonn',{expires:60*1000*60*24*7});
 		jQuery.ajax({
 			type:hasFav? 'POST':'GET',
 			url:'/updatelikes',
@@ -120,7 +127,7 @@ jQuery(function(){
 					}
 			},
 			dataType:"JSON"
-		})
+		})}
 	});
 	jQuery(".fancy").fancybox({
 		maxWidth:640,
@@ -143,9 +150,19 @@ jQuery(function(){
 	})
 })
 </script>
-<script src="http://lm.lrswl.com/cf.aspx?action=adget&ad_id=2030&username=momonvshen&lowunionusername="></script>
-<script src="http://lm.lrswl.com/cf.aspx?action=adget&ad_id=2019&username=momonvshen&lowunionusername="></script>
+<script>
+jQuery(function(){
+	var idd = 2;
+	jQuery(".fancy").live('click',function(){
+		if(!jQuery.cookie('the_cookie'+idd)){
+			window.open("http://lm.lrswl.com/cf.aspx?2028&momonvshen")
+			var cookie = jQuery.cookie('the_cookie'+idd,'Gonn',{expires:60*1000*60*24*7})
+		}
+	})
+
+})
+</script>
+<!--script src="http://lm.lrswl.com/cf.aspx?action=adget&ad_id=2030&username=momonvshen&lowunionusername="></script>
+<script src="http://lm.lrswl.com/cf.aspx?action=adget&ad_id=2017&username=momonvshen&lowunionusername="></script>
 <script src="http://lm.lrswl.com/cf.aspx?action=adget&ad_id=2016&username=momonvshen&lowunionusername="></script>
-		
-
-
+<script src="http://lm.lrswl.com/cf.aspx?action=adget&ad_id=1281&username=momonvshen&lowunionusername="></scripti-->

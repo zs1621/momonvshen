@@ -15,10 +15,10 @@ html{
 	font-size: 13px;
 }
 #ad1{
-    font-size: 16px;
+    font-size: 13px;
     border-radius:2em;
     background-color: #FFB7DD; 
-    margin:-24px 48px;
+    margin:-26px 500px ;
     float: left;
     -webkit-box-shadow:1px 1px 3px #292929;
     -moz-box-shadow:1px 1px 3px #292929;
@@ -50,8 +50,8 @@ table {
 #images{
     float:left;
     position: relative;
-    margin: 10px 40px;
-    width:1200px;
+    margin: 0 130px; 
+    width:1250px;
 }
 
 body{
