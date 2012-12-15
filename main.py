@@ -87,7 +87,8 @@ class Area:
 		users = json.loads(model.getRandomUser(city,ran))
 		for user in users:
 			user['likes'] = int(user['likes'])
-		return render.user(users,city,chinesecity)
+		ide = 1
+		return render.user(users,city,chinesecity,ide)
 		
 
 class Retrive:
@@ -125,7 +126,8 @@ class Top:
 		users = json.loads(model.getTop(city))
 		for user in users:
 			user['likes'] = int(user['likes'])
-		return render.top(users,city,chinesecity)
+		ide = 0
+		return render.top(users,city,chinesecity,ide)
 class TopRetrive:
 	def GET(self):
 		city = web.input().city
