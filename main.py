@@ -51,6 +51,7 @@ cs = {"sh":"上海",
 					"jl":"吉林",
 					"ln":"辽宁",
 					"js":"江苏",
+					"sd":"山东",
 					"fj":"福建",
 					"gd":"广东",
 					"xg":"香港",
@@ -135,5 +136,5 @@ class TopRetrive:
 		users = model.getTopPubu(city,cursor)
 		return users
 if __name__ == "__main__":
-	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
+	#web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()

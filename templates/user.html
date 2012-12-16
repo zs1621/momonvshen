@@ -137,9 +137,9 @@ jQuery(function(){
 	jQuery(".fancy").fancybox({
 		maxWidth:640,
 		maxHeight:640,
-		width:600,
+		width:'70%',
 		fitToView:false,
-		height:500,
+		height:'80%',
 		closeClick:true,
 		openEffect:"none",
 		closeEffect:"none",
@@ -149,7 +149,10 @@ jQuery(function(){
 		mousewheel:false,
 		helpers:{
 			title:{type:"float"},
-			buttons:{}
+			buttons:{},
+			overlay:{
+				showEarly:true
+			}
 		}
 	
 	})
