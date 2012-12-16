@@ -10,10 +10,10 @@ $def with (content)
 	<meta name="keywords" content="陌陌,宅男,女神,全国,约">
 	<meta name="baidu_union_verify" content="2343070c7257aaa7e8e5b1160e986f2d">
 	<meta name="description" content="陌陌女神-更直观的查看女神">
-	<script src="/static/js/jquery.js" type="text/javascript"></script>
-	<script src="/static/js/jquery.fancybox.pack.js"></script>
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
+	<script src="http://rhapsody.b0.upaiyun.com/momo/jquery.fancybox.pack.js"></script>
 	<link href="/static/css/index.css" rel="stylesheet">
-	<link href="/static/css/dt.css" rel="stylesheet">
+	<!--link href="/static/css/dt.css" rel="stylesheet"-->
 	<link href="/static/css/jquery.fancybox.css" rel="stylesheet">
 	<script type="text/javascript">
 
@@ -36,12 +36,12 @@ $def with (content)
 		</div>
 			<div id="area" title='$content.title'>$content.title</div>
 			$if content.title != "MOMO": 
-				<a id="homepage" title="首页" href="/">选择地区</a><span>|</span>
+				<a id="homepage" title="首页" href="/">选择地区</a>
 				$if content.id == "0":
-					<a id="homenav" title="$(content.title)Top100" style="color:#008ED3" href="/top/$content.ctitle">TOP100</a><span>|</span>
+					<a id="homenav" title="$(content.title)Top100" style="color:#008ED3" href="/top/$content.ctitle">TOP100</a>
 					<a id="homerandom" title="$(content.title)随便看" href="/area/$content.ctitle">随便看看</a>
 				$else:
-					<a id="homenav" title="$(content.title)Top100" href="/top/$content.ctitle">TOP100</a><span>|</span>
+					<a id="homenav" title="$(content.title)Top100" href="/top/$content.ctitle">TOP100</a>
 					<a id="homerandom" title="$(content.title)随便看" style="color:#008ED3" href="/area/$content.ctitle">随便看看</a>
 	</div>
 	<div class="headerSpacer"> </div>	

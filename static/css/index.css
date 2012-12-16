@@ -10,30 +10,40 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 }
 html{
-	background-color: #E9E9E9;
+	background: #D0D0D0;
 	font-family:'lato';
 	font-size: 13px;
 }
+#cnzz{
+ margin:300px 0 0 20px;
+ position:relative;
+}
 
 #ad2{
-    float: right;
+   /* float: right;
     width: 200px;
-    margin-right: -20px;
+    margin-right: -20px;*/
+    width:200px;
+    position:fixed;
+    top:40px;
+    right:-20px;
 }
 #ad1{
     font-size: 13px;
     border-radius:2em;
-    background-color: #FFB7DD; 
-    margin:-26px 200px ;
+   /* background-color: #FFB7DD; */
+    margin:-26px 14% 0px 15%;
     float: left;
-    -webkit-box-shadow:1px 1px 3px #292929;
+   /* -webkit-box-shadow:1px 1px 3px #292929;
     -moz-box-shadow:1px 1px 3px #292929;
     box-shadow:1px 1px 3px #292929;
-
+	*/
+   padding-bottom: 8px;
 
 }
 .button {
-    background: #00BBFF;    
+    background-color:#2596E6;
+    background-image: -moz-linear-gradient(center top , #2F9EEC, #1988D6);    
     display: inline-block;
     outline: none;
     cursor: pointer;
@@ -51,6 +61,7 @@ html{
 }
 .button:hover {
     text-decoration: none;
+    color:#FFFFFF;
 }
 .button:active {
     position: relative;
@@ -80,13 +91,12 @@ table {
 #images{
     float:left;
     position: relative;
-    margin: 0 130px; 
+    margin:15px 10%; 
+    background:#DDDDDD;
     width:1250px;
 }
 
-body{
 
-}
 .data{
     float:left;
     padding: 10px;
@@ -100,37 +110,42 @@ img{height: auto; display: block;border: 0}
     position: relative;
     margin: 0 auto;
 }
-body{
-    background-image:url(about:blank);background-attachment: fixed; 
-}
 #header{
-		background:rgba(199,126,181,0.3);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cc77eb5,endColorstr=#4cc77eb5);zoom:1;
+		background-color: #FFFFFF;
+		background-image:-moz-linear-gradient(center top , #FFFFFF, #F8F8F8);
 		border-bottom:1px solid #CDCDCD;
-		box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 		height: 35px;
 		padding: 0 15px 0 0;
 		position: fixed !important;
-        position: absolute;
-		text-shadow:0 1px #FFFFFF;
+       	        position: absolute;
+	/*	text-shadow:0 1px #FFFFFF;*/
 		width:100%;
 		z-index: 100;
-        top:expression(eval(document.documentElement.scrollTop));
+        	top:expression(eval(document.documentElement.scrollTop));
 }
 :root #header{filter:none\9;}
 #area{
 	color: #A8B3AB;
 	font-family: "微软雅黑";
 	font-size:26px;
-	margin-left:480px;
+	margin-left:36%;
+	margin-top:2px;
 	position: relative;
 	width: 400px;
     float: left;
 }
 #homepage,#homenav,#homerandom{
-    color:#A8B3AB;
-    
+    border-right:1px solid #DDDDDD;
+    padding:9px 5px 0px 0;    
+    float:right;
+    width:80px;
+    height:25px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 14px;
+}
+#homepage:hover,#homenav:hover,#homerandom:hover{
+    background:#444444;
 }
 #homepage:hover,#homenav:hover,#homerandom:hover{
     color:#008ED3
@@ -215,7 +230,7 @@ img{display:block;}
 
 /*地图css*/
 *{text-align:center;}
-#gmap {display:block; width:550px; height:617px; background:url(../img/map.jpg) no-repeat; position:relative; margin:0 0 0 200px; border:1px solid #66666;float: left}
+#gmap {display:block; width:550px; height:617px; background:url(http://zsblog.b0.upaiyun.com/momo/map.jpg!map) no-repeat; position:relative; margin:0 0 0 200px; border:1px solid #66666;float: left}
 #gmap a {color:/000; font-family:arial, sans-serif; font-size:1.2em; font-weight:bold; text-transform:uppercase;}
 
 #title2, #title2:visited {display:block; width:550px; height:617px; padding-top:260px; position:absolute; left:0; top:0; cursor:default; text-decoration:none;}
@@ -344,8 +359,8 @@ img{display:block;}
 
 /*¸£½¨*/
 #fj {display:block; width:47px; height:0; padding-top:59px; overflow:hidden; position:absolute; left:414px; top:313px;}
-* html #hj {height:59px; he\ight:0;}
-#hj:hover {background:transparent url(../img/hj.gif) no-repeat 0 0; overflow:visible;text-indent:-9000px;}
+* html #fj {height:59px; he\ight:0;}
+#fj:hover {background:transparent url(../img/hj.gif) no-repeat 0 0; overflow:visible;text-indent:-9000px;}
 
 /*¹ã¶«*/
 #gd {display:block; width:81px; height:0; padding-top:63px; overflow:hidden; position:absolute; left:350px; top:352px;}

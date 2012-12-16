@@ -5,7 +5,7 @@ $var title: $title
 <div class="content">
 	<div id="galleria">
 	$for photo in profile[0]['photos']:
-		<a href="http://img.immomo.com/album/$photo[0:2]/$photo[2:4]/$(photo)_L.jpg">
+		<a href="http://img.immomo.com/album/$photo[0:2]/$photo[2:4]/$(photo)_S.jpg">
 		<img src="http://img.immomo.com/album/$photo[0:2]/$photo[2:4]/$(photo)_S.jpg" alt="$photo"></a>
 	</div>
 </div>
@@ -43,7 +43,7 @@ $var title: $title
 </div>
 </div>
 
-<script src="/static/js/galleria-1.2.8.min.js"></script>
+<script src="http://rhapsody.b0.upaiyun.com/momo/galleria-1.2.8.min.js"></script>
 
 <script src="/static/js/galleria.history.min.js"></script>
 <script>        
@@ -54,4 +54,15 @@ Galleria.run('#galleria')
 
 
 
+ <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36943868-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
 
