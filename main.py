@@ -36,6 +36,7 @@ app = web.application(urls,globals())
 #session = web.session.Session(app,web.session.DiskSotre('sessions'),initializer={'count':0})
 render1 = web.template.render('templates',base="base1")
 render = web.template.render('templates',base="base")
+render2=web.template.render('templates')
 
 
 cs = {"sh":"上海",
@@ -75,7 +76,7 @@ cs = {"sh":"上海",
 class index:
 	def GET(self):
 		title = "MOMO"
-		return render.index(title)
+		return render2.index(title)
 		
 class Area:
 	def GET(self,name):		
@@ -136,5 +137,5 @@ class TopRetrive:
 		users = model.getTopPubu(city,cursor)
 		return users
 if __name__ == "__main__":
-	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
+	#web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
