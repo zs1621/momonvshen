@@ -91,7 +91,7 @@ table {
 #images{
     float:left;
     position: relative;
-    margin:15px 10%; 
+    margin:10px 10%; 
     background:#DDDDDD;
     width:1250px;
 }
@@ -145,7 +145,7 @@ img{height: auto; display: block;border: 0}
     font-size: 14px;
 }
 #homepage:hover,#homenav:hover,#homerandom:hover{
-    background:#444444;
+    background:#666666;
 }
 #homepage:hover,#homenav:hover,#homerandom:hover{
     color:#008ED3

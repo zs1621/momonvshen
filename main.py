@@ -136,5 +136,5 @@ class TopRetrive:
 		users = model.getTopPubu(city,cursor)
 		return users
 if __name__ == "__main__":
-	#web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
+	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
