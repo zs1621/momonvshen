@@ -28,7 +28,8 @@ urls = (
 	'/profile/(.*)','GetProfile',
 	'/updatelikes','Like',
 	'/top/(\w+)','Top',
-	'/topbuget','TopRetrive'
+	'/topbuget','TopRetrive',
+	'/photo/(.*)','GetPhotos'
 )
 
 app = web.application(urls,globals())
@@ -136,6 +137,11 @@ class TopRetrive:
 		cursor = int(web.input().cursor)
 		users = model.getTopPubu(city,cursor)
 		return users
+class GetPhotos:
+	def GET(self,name):
+		moid = format(name)
+		user = model.getPhotos(moid)
+		return user
 if __name__ == "__main__":
 	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()

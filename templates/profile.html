@@ -4,9 +4,7 @@ $var title: $title
 <div id="page">
 <div class="content">
 	<div id="galleria">
-	$for photo in profile[0]['photos']:
-		<a href="http://img.immomo.com/album/$photo[0:2]/$photo[2:4]/$(photo)_S.jpg">
-		<img src="http://img.immomo.com/album/$photo[0:2]/$photo[2:4]/$(photo)_S.jpg" alt="$photo"></a>
+	
 	</div>
 </div>
 <div id="profile">
@@ -39,22 +37,33 @@ $var title: $title
 			<p><label>经常逛的地：</label>
 				<span>$profile[0]['hangout']</span>
 			</p>
-
 </div>
+<span id="moid" style="display:none" data="$profile[0]['momoid']"></span>
 </div>
-
 <script src="http://rhapsody.b0.upaiyun.com/momo/galleria-1.2.8.min.js"></script>
-
 <script src="/static/js/galleria.history.min.js"></script>
-<script>        
-Galleria.loadTheme('/static/js/galleria.classic.min.js');
-Galleria.run('#galleria')
+<script>
+var id = jQuery("#moid").attr('data');
+jQuery.ajax({
+	type:"GET",
+	dataType:"json",
+	url:"/photo/"+id,
+	error:function(){
+		alert('fuck error')
+	},
+	success: function(data){
+		for(photo in data.photos){
+			var html = "<a href=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_L.jpg><img src=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+" _S.jpg alt="+photo+"></a>";
+			jQuery("#galleria").append(html);
+		}
+		//alert("dd");
+		Galleria.loadTheme('/static/js/galleria.classic.min.js');
+		Galleria.run('#galleria');	
+	}
+})
 </script>
 
-
-
-
- <script type="text/javascript">
+<script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-36943868-1']);
           _gaq.push(['_trackPageview']);
@@ -64,5 +73,4 @@ Galleria.run('#galleria')
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
-        </script>
-
+</script>
