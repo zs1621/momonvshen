@@ -42,7 +42,7 @@ $var title: $title
 </div>
 <script src="http://rhapsody.b0.upaiyun.com/momo/galleria-1.2.8.min.js"></script>
 <script src="/static/js/galleria.history.min.js"></script>
-<script>
+<script language="javascript" for="window" event="onload">
 var id = jQuery("#moid").attr('data');
 jQuery.ajax({
 	type:"GET",
@@ -53,7 +53,7 @@ jQuery.ajax({
 	},
 	success: function(data){
 		for(photo in data.photos){
-			var html = "<a href=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_L.jpg><img src=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+" _S.jpg alt="+photo+"></a>";
+			var html = "<a href=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_L.jpg><img src=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_S.jpg alt="+photo+"></a>";
 			jQuery("#galleria").append(html);
 		}
 		//alert("dd");
