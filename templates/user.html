@@ -4,7 +4,7 @@ $var ctitle: $city
 $var id:$ide
 <div class="headerSpacer"> </div>	
 <div id="ad1">
-<a href="http://lm.lrswl.com/cf.aspx?1667&mmnvshen" target="_blank"><img src="http://lm.lrswl.com/upload/20121114094843.gif" border="0"></a>
+<a href="http://lm.lrswl.com/cf.aspx?1630&mmnvshen" target="_blank"><img src="http://lm.lrswl.com/upload/20121109154122.jpg" border="0"></a>
 <span>点击图片可查看美女陌陌ID:)</span>
 </div>
 
@@ -163,7 +163,11 @@ jQuery(function(){
 	var idd = 2;
 	jQuery(".fancy").live('click',function(){
 		if(!jQuery.cookie('the_cookie'+idd)){
-			window.open("http://lm.lrswl.com/cf.aspx?88&mmnvshen")
+			var url = ["http://lm.lrswl.com/cf.aspx?88&mmnvshen","http://lm.lrswl.com/cf.aspx?2028&mmnvshen"];
+			var random = Math.floor(Math.random()*2);
+		//	alert(url[random]);
+			window.open(url[random]);
+		//	window.open("http://lm.lrswl.com/cf.aspx?88&mmnvshen")
 			var cookie = jQuery.cookie('the_cookie'+idd,'Gonn',{expires:60*1000*60*24})
 		}
 	})
