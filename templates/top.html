@@ -10,7 +10,7 @@ $var id: $ide
 			<div class="data" >
 				<a href="/profile/$(user['_id']['$oid'])" class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=150px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_S.jpg"></img>
 				</a>
-				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']" title="$user['name']" >$user['likes']</a>
+				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']" title="喜欢她" >$user['likes']</a>
 			</div>
 </div>
 
@@ -63,7 +63,7 @@ function getmore(i){
 		success: function(data){
 			jQuery("#loading").hide();
 			for(var m=0;m<data.length;m++){
-				var html = "<div class=data ><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=150px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_S.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+" title="+ data[m].name +">"+data[m].likes+"</a></div>";
+				var html = "<div class=data ><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=150px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_S.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+" title=喜欢她>"+data[m].likes+"</a></div>";
 				jQuery("#images").append(html);
 				jQuery("#loading").hide();
 			}
