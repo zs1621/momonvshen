@@ -16,10 +16,10 @@ $var id:$ide
 </div>
 <div id="images">
 			$for user in users:
-			<div class="data" title="$user['name']">
-				<a href="/profile/$(user['_id']['$oid'])" class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=150px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_S.jpg"></img>
+			<div class="data" >
+				<a href="/profile/$(user['_id']['$oid'])"  class="fancy" data-fancybox-type="iframe" title="$user['name']"><img width=150px src="http://img.immomo.com/album/$user['photos'][0][0:2]/$user['photos'][0][2:4]/$(user['photos'][0])_S.jpg" ></img>
 				</a>
-				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']" >$user['likes']</a>
+				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']"  title="$user['name']">$user['likes']</a>
 			</div>
 </div>
 
