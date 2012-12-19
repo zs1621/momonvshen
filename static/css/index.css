@@ -28,7 +28,7 @@ html{
     font-size: 13px;
     border-radius:2em;
    /* background-color: #FFB7DD; */
-    margin:-26px 14% 0px 15%;
+    margin:-26px 24% 0px 23.6%;
     float: left;
    /* -webkit-box-shadow:1px 1px 3px #292929;
     -moz-box-shadow:1px 1px 3px #292929;
@@ -137,7 +137,7 @@ img{height: auto; display: block;border: 0}
 	margin-left:50%;
 	margin-top:2px;
 	position: relative;
-	width: 400px;
+	width: 200px;
     float: left;
 }
 #homepage,#homenav,#homerandom{
