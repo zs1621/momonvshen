@@ -56,7 +56,7 @@ jQuery.ajax({
 	},
 	success: function(data){
 		for(photo in data.photos){
-			var html = "<a href=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_L.jpg><img src=http://img.immomo.com/album/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_S.jpg alt="+photo+"></a>";
+			var html = "<a href=http://momonvshen.b0.upaiyun.com/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_L.jpg!big><img src=http://momonvshen.b0.upaiyun.com/"+data.photos[photo].substring(0,2)+"/"+data.photos[photo].substring(2,4)+"/"+data.photos[photo]+"_L.jpg!momoavatar alt="+photo+"></a>";
 			jQuery("#galleria").append(html);
 		}
 		//alert("dd");

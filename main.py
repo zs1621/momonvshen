@@ -24,7 +24,6 @@ web.config.debug = False
 urls = (
 	'/','index',
 	'/area/(\w+)','Area',
-	'/pbget','Retrive',
 	'/profile/(.*)','GetProfile',
 	'/updatelikes','Like',
 	'/top/(\w+)','Top',
