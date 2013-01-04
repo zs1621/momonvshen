@@ -41,6 +41,7 @@ render2=web.template.render('templates')
 
 cs = {"sh":"上海",
 					"xj":"新疆",
+					"lmg":"...",
 					"bj":"北京",
 					"xz":"西藏",
 					"hlj":"黑龙江",
