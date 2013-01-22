@@ -19,7 +19,7 @@ import random
 # logger.critical("critical message")
 
 
-web.config.debug = False
+web.config.debug = False 
 
 urls = (
 	'/','index',
@@ -28,16 +28,14 @@ urls = (
 	'/updatelikes','Like',
 	'/top/(\w+)','Top',
 	'/topbuget','TopRetrive',
-	'/photo/(.*)','GetPhotos'
+	'/photo/(.*)','GetPhotos',
 )
 
 app = web.application(urls,globals())
-
 #session = web.session.Session(app,web.session.DiskSotre('sessions'),initializer={'count':0})
 render1 = web.template.render('templates',base="base1")
 render = web.template.render('templates',base="base")
-render2=web.template.render('templates')
-
+render2 = web.template.render('templates')
 
 cs = {"sh":"上海",
 					"xj":"新疆",
@@ -141,7 +139,13 @@ class GetPhotos:
 	def GET(self,name):
 		moid = format(name)
 		user = model.getPhotos(moid)
-		return user
+		return user	
+def notfound():
+	title = "404"
+	return web.notfound(render2.nofound(title))
+
+app.notfound = notfound
+
 if __name__ == "__main__":
 	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
