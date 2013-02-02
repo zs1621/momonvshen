@@ -123,7 +123,7 @@ class Top:
 		city = format(name)
 		for key,value in cs.iteritems():
 			if key == city:
-				chinesecity = value.decode("utf-8") + "Top100"
+				chinesecity = value.decode("utf-8") + " - "+ "热门".decode("utf-8")
 		users = json.loads(model.getTop(city))
 		for user in users:
 			user['likes'] = int(user['likes'])
@@ -147,5 +147,5 @@ def notfound():
 app.notfound = notfound
 
 if __name__ == "__main__":
-	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
+	#web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()

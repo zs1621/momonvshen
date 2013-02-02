@@ -3,16 +3,12 @@ $var title: $chinesecity
 $var ctitle: $city
 $var id:$ide
 <div class="headerSpacer"> </div>	
-<!--div id="ad1">
-<a href="http://lm.lrswl.com/cf.aspx?1630&mmnvshen" target="_blank"><img src="http://lm.lrswl.com/upload/20121109154122.jpg" border="0"></a>
-<span>点击图片可查看美女陌陌ID:)</span>
-</div-->
-
 <div id="ad2">
 <a class="button" href="/area/$city">换一换</a>
 </div>
-<div id="hypbutton">
-	
+<!--div id="hypbutton">	
+</div-->
+<div id = "load">
 </div>
 <div id="images">
 			$for user in users:
@@ -22,7 +18,7 @@ $var id:$ide
 				<a class="fav-btn fav-add" data-id="$user['_id']['$oid']"  title="喜欢她">$user['likes']</a>
 			</div>
 </div>
-
+<div class="clear" style="clear:both"></div>
 <p title="$city" id="city" display="none"></p>
 
 
@@ -35,15 +31,19 @@ var city = jQuery("#city").attr('title');
 //Photo layout 
 window.onload = function(){
 	pubu();
+	jQuery("#load").hide();
+	jQuery(".data").css("visibility","visible")
 }
+window.onresize = function() { pubu(); };
 //Photo layout->action 
 function pubu(){
+		jQuery("#load").show();
 		var margin = 10;
 		var wrap = document.getElementById("images");
 		var li = jQuery(".data");
+		li.css("display","nonoe");
 		var li_W = li[0].offsetWidth + margin;
 		var h = [];
-		li.css("position","absolute");
 		var n  = wrap.offsetWidth/li_W|0;
 		for(var i = 0; i < li.length; i++){
 			li_H = li[i].offsetHeight;
@@ -58,42 +58,9 @@ function pubu(){
 				li.eq(i).css("top",min_H + margin);
 				li.eq(i).css("left",minKey * li_W);
 			}
-		}		
+		}
 }
 var j = 1;
-//Ajax get user data ->action
-// function getmore(i){
-// 	jQuery("#loading").show();
-// 	jQuery.ajax({
-// 		type:"GET",
-// 		url: "/pbget",
-// 		data: {"cursor":i,"city":city},
-// 		dataType: "JSON",
-// 		error: function(){
-// 			alert('err')
-// 		},
-// 		success: function(data){
-// 			jQuery("#loading").hide();
-// 			for(var m=0;m<data.length;m++){
-// 				var html = "<div class=data title="+ data[m].name +"><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=150px src=http://img.immomo.com/album/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_S.jpg></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+">"+data[m].likes+"</a></div>";
-// 				jQuery("#images").append(html);
-// 				jQuery("#loading").hide();
-// 			}
-// 			pubu();
-// 			j = 1;
-// 		}
-// 	})
-// }
-//scroll to bottom -> action
-// jQuery(window).bind("scroll",function(){
-// 	var i = jQuery(".data").length + 1;
-// 	// alert(jQuery(document).scrollTop()+jQuery(window).height());
-// 	// alert(jQuery(document).height()); 
-// 	if((jQuery(document).scrollTop() + jQuery(window).height()) > (jQuery(document).height() - 800) && (j == 1)){
-// 		j = 0;
-//     getmore(i);
-// 	}
-// })
 
 function getarraykey(s,v){
 	for(k in s)

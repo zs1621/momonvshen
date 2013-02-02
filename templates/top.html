@@ -5,6 +5,8 @@ $var id: $ide
 
 <div class="headerSpacer">
 </div>
+<div id = "load">
+</div>
 <div id="images">
 			$for user in users:
 			<div class="data" >
@@ -23,6 +25,9 @@ var city = jQuery("#city").attr('title');
 //Photo layout 
 window.onload = function(){
 	pubu();
+	jQuery("#load").hide();
+	jQuery(".data").css("visibility","visible");
+
 }
 //Photo layout->action 
 function pubu(){
@@ -64,10 +69,11 @@ function getmore(i){
 			jQuery("#loading").hide();
 			for(var m=0;m<data.length;m++){
 				var html = "<div class=data ><a class=fancy href=/profile/"+data[m]._id['\$oid']+" data-fancybox-type=iframe title="+data[m].name+"><img width=150px src=http://momonvshen.b0.upaiyun.com/"+data[m].photos[0].substring(0,2)+"/"+data[m].photos[0].substring(2,4)+"/"+data[m].photos[0]+"_L.jpg!momoavatar></img></a><a class='fav-btn fav-add' data-id="+data[m]._id['\$oid']+" title=喜欢她>"+data[m].likes+"</a></div>";
-				jQuery("#images").append(html);
-				jQuery("#loading").hide();
+				jQuery("#images").append(html);				
 			}
 			pubu();
+			jQuery("#loading").hide();
+			jQuery(".data").css("visibility","visible");
 			j = 1;
 		}
 	})
@@ -90,8 +96,7 @@ function getarraykey(s,v){
 		if(s[k] == v) return k
 }
 </script>
-<script src="/static/js/jquery.cookie.js">
-</script>
+<script src="/static/js/jquery.cookie.js"></script>
 <script>
 jQuery(function(){
 	jQuery(".fav-btn").live('click',function(){
