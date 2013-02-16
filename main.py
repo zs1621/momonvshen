@@ -5,6 +5,10 @@ import pymongo
 import model
 import json
 import random
+import urllib2
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 # import logging
 # import logging.config
 
@@ -29,6 +33,7 @@ urls = (
 	'/top/(\w+)','Top',
 	'/topbuget','TopRetrive',
 	'/photo/(.*)','GetPhotos',
+	'/home','home',
 )
 
 app = web.application(urls,globals())
@@ -72,10 +77,39 @@ cs = {"sh":"上海",
 					"sx":"山西",
 					"shx":"陕西",
 					"am":"澳门"}
-class index:
+
+class home:
 	def GET(self):
 		title = "MOMO"
 		return render2.index(title)
+class index:
+	def GET(self):
+		title = "MOMO"
+		ip = web.ctx['ip']
+		# ip = "65.172.48.18"
+		req = "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=" + ip
+		try:
+			f = urllib2.urlopen(req)
+		except URLError,e:
+			print e
+		for i in f:
+			if "province" in json.loads(i):				
+				chinesecity = json.loads(i)["province"]
+				for key,value in cs.iteritems():
+					if value.decode("utf-8") == chinesecity:
+						city = key
+						users = json.loads(model.getTop(city))
+						for user in users:
+							user['likes'] = int(user['likes'])
+						ide = 0
+						chinesecity = chinesecity.decode("utf-8") + " - "+ "热门".decode("utf-8")
+						return render.top(users, city, chinesecity, ide)
+				return render2.index(title)
+			else:
+				return render2.index(title)
+				# else:
+				# 	return render2.index(title)
+		# return render2.index(title)
 		
 class Area:
 	def GET(self,name):		
@@ -147,5 +181,5 @@ def notfound():
 app.notfound = notfound
 
 if __name__ == "__main__":
-	web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
+	#web.wsgi.runwsgi = lambda func,addr=None:web.wsgi.runfcgi(func,addr)
 	app.run()
